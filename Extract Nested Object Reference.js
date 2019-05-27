@@ -20,11 +20,10 @@ obj.hash('person.history.homeStreet'); // undefined
 obj.hash('person.animal.pet.needNoseAntEater'); // undefined
 */
 Object.prototype.hash = function(string) {
-    let obj = this;
-    let arr = string.split(".").forEach(function(elem) {
-        if (obj) {
-            obj = obj[elem];
-        }
-    });
-    return obj;
+  try {
+  return eval(`this.${string}`)
+  }
+  catch(e){
+  return undefined
+  }
 }
